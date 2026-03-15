@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Welcome {{ user.email }}</h1>
+    <form method="post" action="/logout"><button>Logout</button></form>
+
+    {% if message %}<p class="ok">{{ message }}</p>{% endif %}
+    {% if answer %}<p class="answer">{{ answer }}</p>{% endif %}
+
+    <section class="card">
+      <h2>Site Settings (1 site per user)</h2>
+      <form method="post" action="/site/save">
+        <input name="home_url" type="url" placeholder="https://example.com" value="{{ site.home_url if site else '' }}" required>
+        <input name="login_url" type="url" placeholder="Optional target login URL" value="{{ site.login_url if site and site.login_url else '' }}">
+        <input name="target_username" placeholder="Optional target username" value="{{ site.target_username if site and site.target_username else '' }}">
+        <input name="target_password" type="password" placeholder="Optional target password" value="{{ site.target_password if site and site.target_password else '' }}">
+        <button type="submit">Save Site</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Scrape</h2>
+      <p>Raw pages: {{ pages }} | Processed chunks: {{ chunks }}</p>
+      <form method="post" action="/site/scrape">
+        <button type="submit">Scrape now</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Chat</h2>
+      <form method="post" action="/chat">
+        <textarea name="question" required placeholder="Ask your ecommerce bot"></textarea>
+        <label><input type="checkbox" name="strict" checked> Strict mode (only website knowledge)</label>
+        <button type="submit">Ask</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
