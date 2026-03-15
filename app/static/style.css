@@ -1,0 +1,8 @@
+body { font-family: Arial, sans-serif; background: #f5f7fb; margin: 0; }
+.container { max-width: 800px; margin: 20px auto; padding: 12px; }
+.card { background: white; border-radius: 8px; padding: 16px; margin: 14px 0; box-shadow: 0 1px 4px rgba(0,0,0,.1); }
+input, textarea, button { width: 100%; margin: 6px 0; padding: 10px; }
+button { background: #0a66ff; color: white; border: none; border-radius: 6px; }
+.ok { color: #0a7a26; }
+.error { color: #a12020; }
+.answer { background: #eef4ff; padding: 10px; border-radius: 6px; }
